@@ -88,13 +88,15 @@ decl_module! {
         pub fn transfer_claim(origin, destination: T::AccountId, claim: Vec<u8>) -> dispatch::DispatchResult {
             // Self::create_claim(destination, claim); // create_claim will not work with AccountId
 
-            // let sender = ensure_signed(origin)?;        // ensure I am valid???
-
-            // [x] check I have claim, which means recipient does NOT, because claim is unique
+            // [x] check I have claim
+            let sender = ensure_signed(origin)?;        // ensure I am valid? needed to get AccountId type?
             ensure!(!Proofs::<T>::contains_key(&claim), Error::<T>::ProofAlreadyExist);
 
-            // [x] check sender != recipient
+            // [x] check I have claim, which means recipient does NOT, because claim is unique
             let (owner, _block_number) = Proofs::<T>::get(&claim);
+            ensure!(owner == sender, Error::<T>::NotClaimOwner);
+
+            // [x] check owner/sender != recipient
             ensure!(owner != destination, Error::<T>::CannotTransferToSelf);
 
             // [x] revoke sender claim
@@ -103,12 +105,11 @@ decl_module! {
             // [ ] ensure destination is valid??
             // let recipient = ensure_signed(destination)?;        // ensure receipient valid? NOT working
 
-            // [ ] create recipient claim
+            // [x] create claim for recipient
             Proofs::<T>::insert(&claim, (destination.clone(), frame_system::Module::<T>::block_number()));
 
-
-            //Self::revoke_claim(origin, claim);
-            //Self::deposit_event(RawEvent::ClaimTransferred(origin, destination, claim));
+            // [x] emit event
+            Self::deposit_event(RawEvent::ClaimTransferred(sender, destination, claim));
             Ok(())
         }
 
