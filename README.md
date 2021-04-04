@@ -1,6 +1,18 @@
 # hw5
 substrate_hw5
 
+
+* Q1
+  * 3 common macros:
+    1. decl_storage
+    2. decl_module
+    3. decl_event
+
+  * 3 common storage data structures:
+    1. 单值类型，e.g. Vec, u8,
+    2. 简单映射: Map
+    3. 双键映射: Double Key Map
+
 * Q2 
   1. Chain running
   ![Chain running](chain_running.png?raw=true)
