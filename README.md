@@ -17,31 +17,41 @@ substrate_hw5
   1. Chain running
   ![Compile & chain running](doc/chain_running.png?raw=true)
 
-  2. Alice submit claim 0x00
+  2. Claims Initial State
+  ![Claims initial state](doc/claims_state00.png?raw=true)
+
+  3. Alice claims 0x00
   ![alice 0x00](doc/alice_claims_0x00.png?raw=true)
 
-  2. Bob cannot claim 0x00
+  4. Bob claims 0x00 FAILED
   ![bob 0x01](doc/bob_claims_0x00_failed.png?raw=true)
 
-  4. Bob submit claim 0x01
+  5. Bob claims 0x01
   ![bob 0x01](doc/bob_claims_0x01.png?raw=true)
 
-  5. submitted 2 claims
-  ![2 claims](doc/claims_ѕtate01.png?raw=true)
+  6. submitted 2 claims
+  ![2 claims total](doc/claims_ѕtate01.png?raw=true)
 
   6. Alice cannot revoke Bob's claim
-  ![alice failed to revoke bob's claim](doc/alice_revoke_bob_failed.png?raw=true)
+  ![alice failed to revoke bob's claim](doc/alice_revokes_bob_failed.png?raw=true)
 
   7. Bob revoke own claim successfully
-  ![bob revoke own claim successfully](doc/bob_revoke_own_claim_success.png?raw=true)
+  ![bob revoke own claim successfully](doc/bob_revokes_own_claim.png?raw=true)
 
 
-* Q3 embedded in Q2 pallet/poe.rs
+* Q3 embedded in pallet/poe.rs/transfer_claim
   1. Claims available 
-  ![claims available](doc/claims_available.png?raw=true)
+  ![claims initial state](doc/claims_state01.png?raw=true)
 
-  2. Claim transfer failed
-  ![claim transfer failed](doc/claim_transer_failed?raw=true)
+  2. Self-transfer failed
+  ![self transfer failed](doc/alice_transfers_self_failed?raw=true)
 
-  3. Claim transfer success
-  ![claim transfer success](doc/claim_transer_success?raw=true)
+  3. Transfer something I don't own failed
+  ![transfer not mine failed](doc/alice_transfers_0x01_failed?raw=true)
+
+  4. Claim transfer success
+  ![claim transfer success](doc/alice_transfers_bob_0x00?raw=true)
+
+  5. Bob (5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty) owns 2 claims now
+  ![claims final state](doc/claims_state02.png?raw=true)
+
