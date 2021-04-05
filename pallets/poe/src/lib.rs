@@ -90,7 +90,7 @@ decl_module! {
 
             // [x] check I have claim
             let sender = ensure_signed(origin)?;        // ensure I am valid? needed to get AccountId type?
-            ensure!(!Proofs::<T>::contains_key(&claim), Error::<T>::ProofAlreadyExist);
+            ensure!(Proofs::<T>::contains_key(&claim), Error::<T>::ProofAlreadyExist);
 
             // [x] check I have claim, which means recipient does NOT, because claim is unique
             let (owner, _block_number) = Proofs::<T>::get(&claim);
