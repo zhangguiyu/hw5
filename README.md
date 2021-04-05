@@ -13,12 +13,13 @@ substrate_hw5
     2. 简单映射: Map
     3. 双键映射: Double Key Map
 
-* Q2: Compiled against 3.0.0, please copy over directories pallet/poe and runtime to a raw substrate3.0.0 NoteTemplate to compile
+
+* Q2: Compiled against Substrate 3.0.0, please copy over directories 1) pallet/poe and 2) runtime to a raw substrate 3.0.0 substrate-node-template/ to compile
   1. Chain running
   ![Compile & chain running](doc/chain_running.png?raw=true)
 
   2. Claims Initial State
-  ![Claims initial state](doc/claims_state00.png?raw=true)
+  ![Claims initial state](doc/claims00.png?raw=true)
 
   3. Alice claims 0x00
   ![alice 0x00](doc/alice_claims_0x00.png?raw=true)
